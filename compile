@@ -1,0 +1,10 @@
+#! /bin/bash
+echo "compiling"
+echo ""
+g++ isobel.cpp -o isobel
+echo "launching"
+echo ""
+./isobel
+echo "deleting"
+echo ""
+rm isobel

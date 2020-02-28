@@ -25,7 +25,10 @@ using namespace std;
 // CLASSES////////////////////////////////////////////////
 
 class card {
+private:
+
 	// indicate the card suit bc values are only 1-4, store in a char
+		// 0 : major arcana
 		// 1 : pentacles
 		// 2 : cups
 		// 3 : swords
@@ -46,7 +49,7 @@ public:
 	string getSuit() {
 		switch (suit) {
 			case 0:
-				return NULL;
+				return "no suit";
 			case 1:
 				return "pentacles";
 			case 2:
@@ -55,52 +58,113 @@ public:
 				return "swords";
 			case 4:
 				return "wands";
+			default:
+				return "error";
 		}
 	}
 	char getNumber() {
 		return number;
 	}
+
 	bool getMajor() {
 		return major;
 	}
 
+	string getName() {
+		if (!major) {
+			printf("error: card belongs to the minor arcana");
+		}
+		else {
+		switch (number){
+			case 0:
+				return "the fool"; 
+			case 1:
+				return "the magician";
+			case 2:
+				return "the high priestess";
+			case 3:
+				return "the empress";
+			case 4:
+				return "the emporer";
+			case 5:
+				return "the hierophant";
+			case 6:
+				return "the lovers";
+			case 7:
+				return "the chariot";
+			case 8:
+				return "strength";
+			case 9:
+				return "the hermit";
+			case 10:
+				return "the wheel of fortune";
+			case 11:
+				return "justice";
+			case 12:
+				return "the hanged man";
+			case 13:
+				return "death";
+			case 14:
+				return "temperance";
+			case 15:
+				return "the devil";
+			case 16:
+				return "the tower";
+			case 17:
+				return "the star";
+			case 18:
+				return "the moon";
+			case 19:
+				return "the sun";
+			case 20:
+				return "judgement";
+			case 21:
+				return "the world";
+			default:
+				return "error";
+
+
+
+		}
+		}
+		return name;
+	}
+
+	card(char numberIn, bool majorIn);
+
 
 };
 
-card::card(char suitIn, char numberIn, bool majorIn) {
-	suit = suitIn;
+card::card(char numberIn, bool majorIn) {
 	number = numberIn;
 	major = majorIn;
-}
-
-// INITIALIZE ////////////////////////////////////////////
-
-void init() {
-	// seed random number generator
-	srand(time(NULL));
+	if (!major) {
+		suit = (rand() % 3) + 1;
+	}
+	else {
+		suit = 0;
+	}
 }
 
 
 // HELPER FUNCTIONS///////////////////////////////////////
 
 card draw() {
-
+	char number;
 	bool major = rand() % 2;
 
 	if (major) {
 		char number = rand() % 22;
-		char suit = 0;
 	}
 	else {
 		char number = rand() % 14;
-		char suit = (rand() % 3) + 1;
 	}
-	return card(suit, number, major);
+	return card(number, major);
 }
 
 void menu() {
-  printf("0 | Exit Application\n", );
-  printf("1 | Draw a Card\n", );
+  printf("0 | Exit Application\n");
+  printf("1 | Draw a Card\n");
 
 }
 
@@ -109,29 +173,43 @@ int ui() {
 	cin >> input;
   switch (input) {
     case 1:
+	    {
 			card myCard = draw();
-			if (myCard.major) {
-				printf("You picked #%d of the major arcana, %s\n", myCard.getNumber, myCard.getName);
+			if (myCard.getMajor()) {
+				printf("You picked #%d of the major arcana, %s\n", myCard.getNumber(), myCard.getName());
 			}
 			else {
-
+				printf("You picked the %d of %s in the minor arcana.", myCard.getNumber(), myCard.getSuit());
 			}
-			printf("You picked #%d of the %s arcana.", myCard.getNumber, myCard.getMajor);
-      printf("Test 1 Works\n", );
-      break;
+      			break;
+	    }
+
     case 0:
       // 0 = exit input, quit when user chooses this
       return 0;
+    default:
+      printf("Not a valid input\n");
+      return 1;
   }
-  return;
+  return 1;
 }
 
+// INITIALIZE ////////////////////////////////////////////
+
+void init() {
+	// seed random number generator
+	srand(time(NULL));
+	menu();
+}
+
+
 // MAIN //////////////////////////////////////////////////
-int int main(int argc, char const *argv[]) {
+int main(int argc, char const *argv[]) {
   // execute ui until it returns 0;
 
-   while (ui()) {
-     menu();
+	init();
+	while (ui()) {
+	menu();
    }
 
   return 0;
