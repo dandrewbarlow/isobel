@@ -27,7 +27,7 @@ using namespace std;
 class card {
 private:
 
-	// indicate the card suit bc values are only 1-4, store in a char
+	// indicate the card suit bc values are only 1-4
 		// 0 : major arcana
 		// 1 : pentacles
 		// 2 : cups
@@ -41,8 +41,6 @@ private:
 	// indicate major / minor arcana
 	bool major;
 
-	// Card name
-	string name;
 
 	// access functions
 public:
@@ -62,7 +60,10 @@ public:
 				return "error";
 		}
 	}
-	char getNumber() {
+	int getNumber() {
+		if (number <= 0 && !major) {
+			cout << "[error, no number]";
+		}
 		return number;
 	}
 
@@ -72,95 +73,83 @@ public:
 
 	string getName() {
 		if (!major) {
-			printf("error: card belongs to the minor arcana");
+			printf("error: card belongs to the minor arcana\n");
+			return "error";
 		}
 		else {
-		switch (number){
-			case 0:
-				return "the fool"; 
-			case 1:
-				return "the magician";
-			case 2:
-				return "the high priestess";
-			case 3:
-				return "the empress";
-			case 4:
-				return "the emporer";
-			case 5:
-				return "the hierophant";
-			case 6:
-				return "the lovers";
-			case 7:
-				return "the chariot";
-			case 8:
-				return "strength";
-			case 9:
-				return "the hermit";
-			case 10:
-				return "the wheel of fortune";
-			case 11:
-				return "justice";
-			case 12:
-				return "the hanged man";
-			case 13:
-				return "death";
-			case 14:
-				return "temperance";
-			case 15:
-				return "the devil";
-			case 16:
-				return "the tower";
-			case 17:
-				return "the star";
-			case 18:
-				return "the moon";
-			case 19:
-				return "the sun";
-			case 20:
-				return "judgement";
-			case 21:
-				return "the world";
-			default:
-				return "error";
 
-
+			switch (number){
+				case 0:
+					return "the fool";
+				case 1:
+					return "the magician";
+				case 2:
+					return "the high priestess";
+				case 3:
+					return "the empress";
+				case 4:
+					return "the emporer";
+				case 5:
+					return "the hierophant";
+				case 6:
+					return "the lovers";
+				case 7:
+					return "the chariot";
+				case 8:
+					return "strength";
+				case 9:
+					return "the hermit";
+				case 10:
+					return "the wheel of fortune";
+				case 11:
+					return "justice";
+				case 12:
+					return "the hanged man";
+				case 13:
+					return "death";
+				case 14:
+					return "temperance";
+				case 15:
+					return "the devil";
+				case 16:
+					return "the tower";
+				case 17:
+					return "the star";
+				case 18:
+					return "the moon";
+				case 19:
+					return "the sun";
+				case 20:
+					return "judgement";
+				case 21:
+					return "the world";
+				default:
+					return "error";
+			}
 
 		}
-		}
-		return name;
 	}
 
-	card(char numberIn, bool majorIn);
+	card();
 
 
 };
+card::card() {
+	major = rand() % 2;
 
-card::card(char numberIn, bool majorIn) {
-	number = numberIn;
-	major = majorIn;
-	if (!major) {
-		suit = (rand() % 3) + 1;
-	}
-	else {
+	if (major) {
+		number = rand() % 22;
 		suit = 0;
 	}
+	else {
+		number = rand() % 14 + 1;
+		suit = (rand() % 3) + 1;
+	}
 }
+
 
 
 // HELPER FUNCTIONS///////////////////////////////////////
-
-card draw() {
-	char number;
-	bool major = rand() % 2;
-
-	if (major) {
-		char number = rand() % 22;
-	}
-	else {
-		char number = rand() % 14;
-	}
-	return card(number, major);
-}
 
 void menu() {
   printf("0 | Exit Application\n");
@@ -174,12 +163,15 @@ int ui() {
   switch (input) {
     case 1:
 	    {
-			card myCard = draw();
+			card myCard;
 			if (myCard.getMajor()) {
-				printf("You picked #%d of the major arcana, %s\n", myCard.getNumber(), myCard.getName());
+				cout << "You picked number " << myCard.getNumber() << " of the major arcana, ";
+				cout << myCard.getName() << endl;
+
 			}
 			else {
-				printf("You picked the %d of %s in the minor arcana.", myCard.getNumber(), myCard.getSuit());
+				cout << "You picked number " << myCard.getNumber() << " of " << myCard.getSuit();
+				cout << " in the minor arcana." << endl;
 			}
       			break;
 	    }
@@ -207,7 +199,9 @@ void init() {
 int main(int argc, char const *argv[]) {
   // execute ui until it returns 0;
 
+	// seed random and print menu
 	init();
+
 	while (ui()) {
 	menu();
    }
