@@ -7,13 +7,13 @@
 // Input / Output Streams
 #include <iostream>
 // File Streams
-#include <fstream>
+// #include <fstream>
 // String Streams
-#include <sstream>
+// #include <sstream>
 // Strings
 #include <string>
 // Vectors
-#include <vector>
+// #include <vector>
 // Random Number Generators
 #include <random>
 // Time
@@ -27,12 +27,32 @@ using namespace std;
 
 // HELPER FUNCTIONS///////////////////////////////////////
 
+// print a 20 char line of unicode block elements
+void linePrint() {
+  for (int i = 0; i < 20; i++) {
+    cout << "\u2500";
+  }
+  cout << endl;
+}
+
+// Print main menu
 void menu() {
-  printf("0 | Exit Application\n");
-  printf("1 | Draw a Card\n");
+  linePrint();
+  cout << "0 " << "\u2503" << " Exit Application" << endl;
+  cout << "1 " << "\u2503" << " Draw a Card" << endl;
+  linePrint();
 }
 
 
+// Ask user how many cards they want
+int handHolder() {
+  cout << "How many cards would you like to draw?" << endl;
+  int input;
+  cin >> input;
+  return input;
+}
+
+// print info about a card
 void cardInfo(card myCard) {
 	if (myCard.getMajor()) {
 		cout << "You picked number " << myCard.getNumber() << " of the major arcana, ";
@@ -45,7 +65,12 @@ void cardInfo(card myCard) {
 	}
 }
 
+card * draw(int numCards) {
+  card * hand[numCards];
+  return * hand;
+}
 
+// CLI user interface
 int ui() {
 	int input;
 	cin >> input;
@@ -53,15 +78,20 @@ int ui() {
 
     case 1:
 	    {
-			card myCard;
-			cardInfo(myCard);
-			break;
+        int number = handHolder();
+        linePrint();
+        card myCard[number];
+        for (int i = 0; i < number; i++) {
+          cardInfo(myCard[i]);
+        }
+		    break;
 	    }
 
     case 0:
-      // 0 = exit input, quit when user chooses this
+      // 0 = exit condition, quit when user chooses this
       return 0;
 
+    // if not 1 or 0, tell them they fricked up
     default:
       printf("Not a valid input\n");
       return 1;
@@ -80,12 +110,14 @@ void init() {
 
 // MAIN //////////////////////////////////////////////////
 int main(int argc, char const *argv[]) {
-  // execute ui until it returns 0;
+
 
 	// seed random and print menu
 	init();
 
+  // execute ui until it returns 0;
 	while (ui()) {
+    // print menu until exit condition
 		menu();
    }
 
