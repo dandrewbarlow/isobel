@@ -1,5 +1,5 @@
 # Isobel
-### by Andrew Barlow
+### by [Andrew Barlow](https://github.com/dandrewbarlow)
 This is a tarot reading program for folks who might not necessarily want to buy a tarot deck or techno-occultists
 ## Usage
 Currently works with a simple command line ui. Makefile should be set up so a simple `make` will create executable.
