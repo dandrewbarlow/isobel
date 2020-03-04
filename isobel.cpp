@@ -19,6 +19,9 @@
 // Time
 #include <time.h>
 
+// uncomment when finished
+// #include "card.h"
+
 using namespace std;
 
 
@@ -154,31 +157,38 @@ card::card() {
 void menu() {
   printf("0 | Exit Application\n");
   printf("1 | Draw a Card\n");
-
 }
+
+
+void cardInfo(card myCard) {
+	if (myCard.getMajor()) {
+		cout << "You picked number " << myCard.getNumber() << " of the major arcana, ";
+		cout << myCard.getName() << endl;
+
+	}
+	else {
+		cout << "You picked number " << myCard.getNumber() << " of " << myCard.getSuit();
+		cout << " in the minor arcana." << endl;
+	}
+}
+
 
 int ui() {
 	int input;
 	cin >> input;
   switch (input) {
+		
     case 1:
 	    {
 			card myCard;
-			if (myCard.getMajor()) {
-				cout << "You picked number " << myCard.getNumber() << " of the major arcana, ";
-				cout << myCard.getName() << endl;
-
-			}
-			else {
-				cout << "You picked number " << myCard.getNumber() << " of " << myCard.getSuit();
-				cout << " in the minor arcana." << endl;
-			}
-      			break;
+			cardInfo(myCard);
+			break;
 	    }
 
     case 0:
       // 0 = exit input, quit when user chooses this
       return 0;
+
     default:
       printf("Not a valid input\n");
       return 1;
@@ -203,7 +213,7 @@ int main(int argc, char const *argv[]) {
 	init();
 
 	while (ui()) {
-	menu();
+		menu();
    }
 
   return 0;
