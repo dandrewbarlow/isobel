@@ -1,7 +1,4 @@
-// #ifnddef CARD_H
-// #def CARD_H
-
-// #include <string>
+#include <string>
 
 class card {
 private:
@@ -30,5 +27,3 @@ public:
   std::string getName();
 
 };
-
-// #endif
