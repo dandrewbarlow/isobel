@@ -29,17 +29,23 @@ using namespace std;
 
 // print a 20 char line of unicode block elements
 void linePrint() {
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < 30; i++) {
     cout << "\u2500";
   }
   cout << endl;
+}
+
+void inputMarker() {
+  //hey i like abstraction ok
+  cout << "> ";
 }
 
 // Print main menu
 void menu() {
   linePrint();
   cout << "0 " << "\u2503" << " Exit Application" << endl;
-  cout << "1 " << "\u2503" << " Draw a Card" << endl;
+  cout << "1 " << "\u2503" << " Draw a card" << endl;
+  cout << "2 " << "\u2503" << " Draw multiple cards" << endl;
   linePrint();
 }
 
@@ -47,6 +53,7 @@ void menu() {
 // Ask user how many cards they want
 int handHolder() {
   cout << "How many cards would you like to draw?" << endl;
+  inputMarker();
   int input;
   cin >> input;
   return input;
@@ -65,18 +72,24 @@ void cardInfo(card myCard) {
 	}
 }
 
-card * draw(int numCards) {
-  card * hand[numCards];
-  return * hand;
-}
 
 // CLI user interface
 int ui() {
+  inputMarker();
 	int input;
 	cin >> input;
+
   switch (input) {
 
     case 1:
+    {
+      linePrint();
+      card myCard;
+      cardInfo(myCard);
+      break;
+    }
+
+    case 2:
 	    {
         int number = handHolder();
         linePrint();
@@ -84,7 +97,7 @@ int ui() {
         for (int i = 0; i < number; i++) {
           cardInfo(myCard[i]);
         }
-		    break;
+        break;
 	    }
 
     case 0:
@@ -116,10 +129,11 @@ int main(int argc, char const *argv[]) {
 	init();
 
   // execute ui until it returns 0;
-	while (ui()) {
+	while (ui() != 0) {
     // print menu until exit condition
 		menu();
    }
+   cout  << "Thank you, have a nice day" << endl;
 
   return 0;
 }
