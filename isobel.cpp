@@ -64,7 +64,7 @@ void cardInfo(card myCard) {
 	if (myCard.getMajor()) {
 		cout << "#" << myCard.getNumber();
     if (myCard.getReverse()) {
-      cout << " reversed ";
+      cout << " reversed";
     }
     cout << " of the major arcana, ";
 		cout << myCard.getName() << endl;
@@ -73,7 +73,7 @@ void cardInfo(card myCard) {
 	else {
 		cout << "#" << myCard.getNumber();
     if (myCard.getReverse()) {
-      cout << " reversed ";
+      cout << " reversed";
     }
     cout << " of " << myCard.getSuit();
 		cout << " in the minor arcana." << endl;
