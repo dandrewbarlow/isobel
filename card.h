@@ -17,6 +17,8 @@ private:
 	// indicate major / minor arcana
 	bool major;
 
+	bool reverse;
+
 
 	// access functions
 public:
@@ -24,6 +26,7 @@ public:
   std::string getSuit();
   int getNumber();
   bool getMajor();
+	bool getReverse();
   std::string getName();
 
 };

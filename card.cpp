@@ -13,6 +13,10 @@ bool card::getMajor() {
   return major;
 }
 
+bool card::getReverse() {
+  return reverse;
+}
+
 std::string card::getSuit() {
   switch (suit) {
     case 0:
@@ -94,6 +98,7 @@ std::string card::getName() {
 
 card::card() {
   major = rand() % 2;
+  reverse = rand() % 2;
 
   if (major) {
     number = rand() % 22;
