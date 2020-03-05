@@ -62,12 +62,20 @@ int handHolder() {
 // print info about a card
 void cardInfo(card myCard) {
 	if (myCard.getMajor()) {
-		cout << "You picked number " << myCard.getNumber() << " of the major arcana, ";
+		cout << "#" << myCard.getNumber();
+    if (myCard.getReverse()) {
+      cout << " reversed ";
+    }
+    cout << " of the major arcana, ";
 		cout << myCard.getName() << endl;
 
 	}
 	else {
-		cout << "You picked number " << myCard.getNumber() << " of " << myCard.getSuit();
+		cout << "#" << myCard.getNumber();
+    if (myCard.getReverse()) {
+      cout << " reversed ";
+    }
+    cout << " of " << myCard.getSuit();
 		cout << " in the minor arcana." << endl;
 	}
 }
