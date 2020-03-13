@@ -146,10 +146,14 @@ void init() {
 // MAIN //////////////////////////////////////////////////
 int main(int argc, char const *argv[]) {
 
-
 	// seed random and print menu
 	init();
-  const char * argument = argv[1];
+
+  const char * argument;
+
+  if (argc > 0) {
+    argument = argv[1];
+  }
 
   //called with no arguments
   if (argc == 0) {
@@ -174,7 +178,7 @@ int main(int argc, char const *argv[]) {
        cout << "error: NaN" << endl;
        cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
      }
-     //create hand based on
+     //create hand based on input
      int inCards = atoi(argument);
      card myCard[inCards];
      for (int i = 0; i < inCards; i++) {
