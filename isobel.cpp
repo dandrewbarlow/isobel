@@ -40,6 +40,20 @@ void inputMarker() {
   cout << "> ";
 }
 
+//borrowed from stackoverflow
+bool isNumber(const char number[])
+{
+    int i = 0;
+
+    for (; number[i] != 0; i++)
+    {
+        //if (number[i] > '9' || number[i] < '0')
+        if (!isdigit(number[i]))
+            return false;
+    }
+    return true;
+}
+
 // Print main menu
 void menu() {
   linePrint();
@@ -125,7 +139,7 @@ int ui() {
 void init() {
 	// seed random number generator
 	srand(time(NULL));
-	menu();
+
 }
 
 
@@ -135,13 +149,40 @@ int main(int argc, char const *argv[]) {
 
 	// seed random and print menu
 	init();
+  const char * argument = argv[1];
 
-  // execute ui until it returns 0;
-	while (ui() != 0) {
-    // print menu until exit condition
-		menu();
+  //called with no arguments
+  if (argc == 0) {
+    //initial menu function
+    menu();
+    // execute ui until it returns 0;
+  	while (ui() != 0) {
+      // print menu until exit condition
+  		menu();
+     }
+
+     cout  << "Thank you, have a nice day" << endl;
    }
-   cout  << "Thank you, have a nice day" << endl;
+   //called w/ too many arguments
+   else if (argc > 2){
+     cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
+   }
+   //called w/ 1 argument
+   else if (argc == 1) {
+     //check if arg is a number
+     if (!isNumber(argument)) {
+       cout << "error: NaN" << endl;
+       cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
+     }
+     //create hand based on
+     int inCards = atoi(argument);
+     card myCard[inCards];
+     for (int i = 0; i < inCards; i++) {
+       cardInfo(myCard[i]);
+     }
+
+
+   }
 
   return 0;
 }
