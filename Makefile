@@ -1,7 +1,7 @@
 
 isobel: isobel.o card.o
 	g++ isobel.o card.o -o isobel
-	rm *.o
+#	rm *.o
 
 isobel.o: isobel.cpp
 	g++ -c isobel.cpp
@@ -11,3 +11,4 @@ card.o: card.cpp card.h
 
 clean:
 	rm isobel
+	rm *.o

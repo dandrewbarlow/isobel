@@ -45,7 +45,7 @@ bool isNumber(const char number[])
 {
     int i = 0;
 
-    for (; number[i] != 0; i++)
+    for (; number[i+1] != '\0'; i++)
     {
         //if (number[i] > '9' || number[i] < '0')
         if (!isdigit(number[i]))
