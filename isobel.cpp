@@ -156,7 +156,9 @@ int main(int argc, char const *argv[]) {
   }
 
   //called with no arguments
-  if (argc == 0) {
+  switch argc:
+	case 0:
+  {
     //initial menu function
     menu();
     // execute ui until it returns 0;
