@@ -2,7 +2,7 @@
 ### by [Andrew Barlow](https://github.com/dandrewbarlow)
 This is a tarot reading program for folks who might not necessarily want to buy a tarot deck or techno-occultists
 ## Usage
-Run 'make' in command line to create executable.
+Run `make` in command line to create executable.
 `./isobel -n` will run it and draw n cards.
 `./isobel` for CLI.
 

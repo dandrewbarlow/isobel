@@ -135,10 +135,6 @@ int main(int argc, char const *argv[]) {
 	// seed random and print menu
 	init();
 
-  const char * argument;
-
-  //use switch functionality to run based on inputs
-
   //called with no arguments
   if (argc == 1) {
     //initial menu function
@@ -152,9 +148,9 @@ int main(int argc, char const *argv[]) {
      cout  << "Thank you, have a nice day" << endl;
    }
    else if (argc == 2) {
-     argument = argv[1];
+
      //create hand based on input
-     int inCards = atoi(argument);
+     int inCards = atoi(argv[1]);
      card myCard[inCards];
      for (int i = 0; i < inCards; i++) {
        cardInfo(myCard[i]);
