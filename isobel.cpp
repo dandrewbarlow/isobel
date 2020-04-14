@@ -136,12 +136,11 @@ int main(int argc, char const *argv[]) {
 	init();
 
   const char * argument;
+
   //use switch functionality to run based on inputs
 
   //called with no arguments
-  switch (argc) {
-	case 1:
-  {
+  if (argc == 1) {
     //initial menu function
     menu();
     // execute ui until it returns 0;
@@ -152,9 +151,8 @@ int main(int argc, char const *argv[]) {
 
      cout  << "Thank you, have a nice day" << endl;
    }
-   //called w/ 1 argument
-   case 2:
-   {
+   else if (argc == 2) {
+     argument = argv[1];
      //create hand based on input
      int inCards = atoi(argument);
      card myCard[inCards];
@@ -162,13 +160,9 @@ int main(int argc, char const *argv[]) {
        cardInfo(myCard[i]);
      }
    }
-   default:
-   {
+   else if (argc > 2) {
      //called w/ too many arguments
        cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
-   }
-
-
    }
 
   return 0;
