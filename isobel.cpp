@@ -40,6 +40,23 @@ void inputMarker() {
   cout << "> ";
 }
 
+<<<<<<< HEAD
+=======
+//borrowed from stackoverflow
+bool isNumber(const char number[])
+{
+    int i = 0;
+
+    for (; number[i+1] != '0'; i++)
+    {
+        //if (number[i] > '9' || number[i] < '0')
+        if (!isdigit(number[i]))
+            return false;
+    }
+    return true;
+}
+
+>>>>>>> 7612417814238f7c28ffc7baef7de2b6da5d686c
 // Print main menu
 void menu() {
   linePrint();
@@ -136,10 +153,7 @@ int main(int argc, char const *argv[]) {
 	init();
 
   const char * argument;
-
-  if (argc > 0) {
-    argument = argv[1];
-  }
+  //use switch functionality to run based on inputs
 
   //called with no arguments
   switch (argc) {

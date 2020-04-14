@@ -11,3 +11,4 @@ card.o: card.cpp card.h
 
 clean:
 	rm isobel
+	rm *.o
