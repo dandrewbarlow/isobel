@@ -40,20 +40,6 @@ void inputMarker() {
   cout << "> ";
 }
 
-//borrowed from stackoverflow
-bool isNumber(const char number[])
-{
-    int i = 0;
-
-    for (; number[i] != 0; i++)
-    {
-        //if (number[i] > '9' || number[i] < '0')
-        if (!isdigit(number[i]))
-            return false;
-    }
-    return true;
-}
-
 // Print main menu
 void menu() {
   linePrint();
@@ -156,8 +142,8 @@ int main(int argc, char const *argv[]) {
   }
 
   //called with no arguments
-  switch argc:
-	case 0:
+  switch (argc) {
+	case 1:
   {
     //initial menu function
     menu();
@@ -169,23 +155,21 @@ int main(int argc, char const *argv[]) {
 
      cout  << "Thank you, have a nice day" << endl;
    }
-   //called w/ too many arguments
-   else if (argc > 2){
-     cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
-   }
    //called w/ 1 argument
-   else if (argc == 1) {
-     //check if arg is a number
-     if (!isNumber(argument)) {
-       cout << "error: NaN" << endl;
-       cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
-     }
+   case 2:
+   {
      //create hand based on input
      int inCards = atoi(argument);
      card myCard[inCards];
      for (int i = 0; i < inCards; i++) {
        cardInfo(myCard[i]);
      }
+   }
+   default:
+   {
+     //called w/ too many arguments
+       cout << "USAGE: isobel [n]" << endl << "n: number of cards to draw" << endl;
+   }
 
 
    }
