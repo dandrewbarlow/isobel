@@ -105,7 +105,7 @@ card::card() {
     suit = 0;
   }
   else {
-    number = rand() % 14 + 1;
+    number = (rand() % 14) + 1;
     suit = (rand() % 3) + 1;
   }
 }

@@ -27,7 +27,7 @@ using namespace std;
 
 // HELPER FUNCTIONS///////////////////////////////////////
 
-// print a 20 char line of unicode block elements
+// print a 30 char line of unicode block elements
 void linePrint() {
   for (int i = 0; i < 30; i++) {
     cout << "\u2500";
@@ -43,6 +43,7 @@ void inputMarker() {
 // Print main menu
 void menu() {
   linePrint();
+  // \u2503 is a vertical line in unicode
   cout << "0 " << "\u2503" << " Exit Application" << endl;
   cout << "1 " << "\u2503" << " Draw a card" << endl;
   cout << "2 " << "\u2503" << " Draw multiple cards" << endl;
@@ -52,11 +53,18 @@ void menu() {
 
 int spreadMenu() {
   linePrint();
+  //only one option for now, but
+  cout << "0 " << "\u2503" << " Cancel" << endl;
 	cout << "1 " << "\u2503" << " Celtic Cross" << endl;
   linePrint();
   inputMarker();
   int input;
   cin >> input;
+  if (input != 0 && input != 1) {
+    cout << "invalid input, please try again" << endl;
+    // recursive gang represent
+    input = spreadMenu();
+  }
   return input;
 }
 
@@ -67,6 +75,10 @@ int handHolder() {
   inputMarker();
   int input;
   cin >> input;
+  if (cin.fail()) {
+    printf("Not a valid input\n");
+    input = handHolder();
+  }
   return input;
 }
 

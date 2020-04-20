@@ -17,6 +17,7 @@ private:
 	// indicate major / minor arcana
 	bool major;
 
+	// card can be reversed, equivalent to being dealt upside down
 	bool reverse;
 
 
