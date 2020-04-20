@@ -46,7 +46,18 @@ void menu() {
   cout << "0 " << "\u2503" << " Exit Application" << endl;
   cout << "1 " << "\u2503" << " Draw a card" << endl;
   cout << "2 " << "\u2503" << " Draw multiple cards" << endl;
+  cout << "3 " << "\u2503" << " Draw a spread" << endl;
   linePrint();
+}
+
+int spreadMenu() {
+  linePrint();
+	cout << "1 " << "\u2503" << " Celtic Cross" << endl;
+  linePrint();
+  inputMarker();
+  int input;
+  cin >> input;
+  return input;
 }
 
 
@@ -80,6 +91,27 @@ void cardInfo(card myCard) {
 	}
 }
 
+//lay out a celtic spread
+void celticSpread() {
+  string position[10];
+  position[0] = "The Present";
+  position[1] = "The Problem";
+  position[2] = "The Past";
+  position[3] = "The Future";
+  position[4] = "Conscious";
+  position[5] = "Unconscious";
+  position[6] = "Your Influence";
+  position[7] = "External Influence";
+  position[8] = "Hopes and Fears",
+  position[9] = "Outcome";
+  card myCard[10];
+  linePrint();
+  for (int i = 0; i < 10; i++) {
+    cout << position[i] << ":" << endl;
+    cardInfo(myCard[i]);
+    cout << endl;
+  }
+}
 
 // CLI user interface
 int ui() {
@@ -89,6 +121,7 @@ int ui() {
 
   switch (input) {
 
+    //draw a card
     case 1:
     {
       linePrint();
@@ -97,6 +130,7 @@ int ui() {
       break;
     }
 
+    //draw multiple cards
     case 2:
 	    {
         int number = handHolder();
@@ -107,7 +141,15 @@ int ui() {
         }
         break;
 	    }
-
+    //draw a spread
+    case 3:
+	    {
+		      int spread = spreadMenu();
+          if (spread == 1) {
+            celticSpread();
+          }
+          break;
+      }
     case 0:
       // 0 = exit condition, quit when user chooses this
       return 0;
