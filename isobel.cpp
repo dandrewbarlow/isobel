@@ -72,7 +72,9 @@ int spreadMenu() {
 // Ask user how many cards they want
 int handHolder() {
   cout << "How many cards would you like to draw?" << endl;
+
   inputMarker();
+
   int input;
   cin >> input;
 
