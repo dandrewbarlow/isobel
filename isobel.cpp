@@ -75,9 +75,15 @@ int handHolder() {
   inputMarker();
   int input;
   cin >> input;
-  if (cin.fail()) {
-    printf("Not a valid input\n");
-    input = handHolder();
+
+  if (cin.fail()){
+	cout << "Not a valid input" << endl;
+	//clear cin
+	cin.clear();
+	//ignore characters that cause errors
+	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	//recursive error handling
+    	input = handHolder();
   }
   return input;
 }
