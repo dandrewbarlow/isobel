@@ -6,14 +6,8 @@
 
 // Input / Output Streams
 #include <iostream>
-// File Streams
-// #include <fstream>
-// String Streams
-// #include <sstream>
 // Strings
 #include <string>
-// Vectors
-// #include <vector>
 // Random Number Generators
 #include <random>
 // Time
@@ -174,7 +168,7 @@ int ui() {
       // 0 = exit condition, quit when user chooses this
       return 0;
 
-    // if not 1 or 0, tell them they fricked up
+    // if not a valid input, tell them they fricked up
     default:
       printf("Not a valid input\n");
       return 1;
