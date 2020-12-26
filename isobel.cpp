@@ -211,7 +211,7 @@ void init() {
 // MAIN //////////////////////////////////////////////////
 int main(int argc, char const *argv[]) {
 
-	// seed random and print menu
+	// seed random and register signal handlers
 	init();
 
   //called with no arguments
